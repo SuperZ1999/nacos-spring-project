@@ -80,8 +80,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- Compiler settings properties -->
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <!-- 这里将编译的版本设为1.8，因为本工程里引用了jdk8的类，并且依赖了jdk8编译的依赖包比如spring5，所以用户使用本工程的时候必须使用jdk8，那既然如此编译成1.6、1.7、1.8没有任何区别 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
         <!-- Exclude all generated code -->

@@ -16,10 +16,12 @@
  */
 package com.alibaba.nacos.spring.util;
 
+import java.lang.annotation.Annotation;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import com.alibaba.nacos.api.annotation.NacosProperties;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.mock.env.MockEnvironment;
@@ -40,6 +42,11 @@ public class PropertiesPlaceholderResolverTest {
 		PropertiesPlaceholderResolver resolver = new PropertiesPlaceholderResolver(
 				environment);
 
+		testMapResolve(environment, resolver);
+		testAnnotationResolve(environment, resolver);
+	}
+
+	private void testMapResolve(MockEnvironment environment, PropertiesPlaceholderResolver resolver) {
 		Map properties = new HashMap();
 		properties.put("my.name", "${my.name}");
 		properties.put("my.age", 18);
@@ -51,6 +58,19 @@ public class PropertiesPlaceholderResolverTest {
 
 		Assert.assertEquals(resolvedProperties.get("my.name"), "mercyblitz");
 		Assert.assertNull(resolvedProperties.get("my.age"));
+	}
+
+	private void testAnnotationResolve(MockEnvironment environment, PropertiesPlaceholderResolver resolver) {
+		environment.setProperty("nacos.username:", "SuperZ1999");
+
+		Annotation[] annotations = TestAnnotation.class.getAnnotations();
+		Properties resolvedProperties = resolver.resolve(annotations[0]);
+
+		Assert.assertEquals(resolvedProperties.get("username"), "SuperZ1999");
+	}
+
+	@NacosProperties
+	@interface TestAnnotation {
 
 	}
 
