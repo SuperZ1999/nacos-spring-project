@@ -110,6 +110,8 @@ public class AnnotationNacosInjectedBeanPostProcessor
 		AbstractNacosServiceBeanBuilder serviceBeanBuilder = nacosServiceBeanBuilderMap
 				.get(injectedType);
 
+		System.out.println("native test: " + serviceBeanBuilder);
+
 		Map<String, Object> nacosProperties = getNacosProperties(attributes);
 
 		return serviceBeanBuilder.build(nacosProperties);

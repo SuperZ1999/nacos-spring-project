@@ -29,11 +29,7 @@ import static com.alibaba.spring.util.ClassUtils.resolveGenericType;
 import static java.lang.String.format;
 import static org.springframework.util.ClassUtils.resolveClassName;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 import com.alibaba.nacos.api.config.ConfigService;
 import org.slf4j.Logger;
@@ -97,6 +93,10 @@ public abstract class AbstractNacosPropertySourceBuilder<T extends BeanDefinitio
 
 		Map<String, Object>[] attributesArray = resolveRuntimeAttributesArray(
 				beanDefinition, globalNacosProperties);
+		if (beanName.equals("nacosConfiguration")) {
+			System.out.println(globalNacosProperties);
+			System.out.println(Arrays.toString(attributesArray));
+		}
 
 		int size = attributesArray == null ? 0 : attributesArray.length;
 

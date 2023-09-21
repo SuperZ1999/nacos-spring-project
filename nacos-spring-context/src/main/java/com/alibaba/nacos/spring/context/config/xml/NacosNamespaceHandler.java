@@ -30,6 +30,7 @@ public class NacosNamespaceHandler extends NamespaceHandlerSupport {
 
 	@Override
 	public void init() {
+		System.out.println("初始化NacosNamespaceHandler");
 		registerBeanDefinitionParser("annotation-driven",
 				new NacosAnnotationDrivenBeanDefinitionParser());
 		registerBeanDefinitionParser("global-properties",

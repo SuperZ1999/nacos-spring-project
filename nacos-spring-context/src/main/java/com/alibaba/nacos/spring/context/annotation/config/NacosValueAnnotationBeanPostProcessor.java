@@ -118,7 +118,9 @@ public class NacosValueAnnotationBeanPostProcessor
 	protected Object doGetInjectedBean(AnnotationAttributes attributes, Object bean,
 			String beanName, Class<?> injectedType,
 			InjectionMetadata.InjectedElement injectedElement) throws Exception {
+		System.out.println("attributes的value: " + attributes.getString("value"));
         Object value = resolveStringValue(attributes.getString("value"));
+		System.out.println("value: " + value);
         Member member = injectedElement.getMember();
 		if (member instanceof Field) {
 			return convertIfNecessary((Field) member, value);
@@ -154,6 +156,7 @@ public class NacosValueAnnotationBeanPostProcessor
 		// In to this event receiver, the environment has been updated the
 		// latest configuration information, pull directly from the environment
 		// fix issue #142
+		System.out.println("进入了onApplicationEvent");
 		for (Map.Entry<String, List<NacosValueTarget>> entry : placeholderNacosValueTargetMap
 				.entrySet()) {
 			String key = environment.resolvePlaceholders(entry.getKey());
@@ -187,7 +190,9 @@ public class NacosValueAnnotationBeanPostProcessor
 
 	private Object resolveStringValue(String strVal) {
 		String value = beanFactory.resolveEmbeddedValue(strVal);
+		System.out.println(value);
 		if (exprResolver != null && value != null) {
+			System.out.println("进去了: " + exprResolver.evaluate(value, exprContext));
 			return exprResolver.evaluate(value, exprContext);
 		}
 		return value;

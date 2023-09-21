@@ -53,6 +53,7 @@ public class NacosBeanDefinitionRegistrar
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,
 			BeanDefinitionRegistry registry) {
+		System.out.println("native test: " + "进入registerBeanDefinitions");
 		BeanDefinition annotationProcessor = BeanDefinitionBuilder
 				.genericBeanDefinition(PropertySourcesPlaceholderConfigurer.class)
 				.getBeanDefinition();
@@ -71,15 +72,17 @@ public class NacosBeanDefinitionRegistrar
 		registerNacosAnnotationBeans(registry);
 		// Invoke NacosPropertySourcePostProcessor immediately
 		// in order to enhance the precedence of @NacosPropertySource process
-		invokeNacosPropertySourcePostProcessor(beanFactory);
+//		invokeNacosPropertySourcePostProcessor(beanFactory);
 	}
 
 	@Override
 	public void setEnvironment(Environment environment) {
+		System.out.println("native test: " + "进入setEnvironment");
 		this.environment = environment;
 	}
 
 	public void registerNacosAnnotationBeans(BeanDefinitionRegistry registry) {
+		System.out.println("native test: " + "进入registerNacosAnnotationBeans");
 		registerNacosCommonBeans(registry);
 		registerNacosConfigBeans(registry, environment, beanFactory);
 		registerNacosDiscoveryBeans(registry);
@@ -87,6 +90,7 @@ public class NacosBeanDefinitionRegistrar
 
 	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+		System.out.println("native test: " + "进入setBeanFactory");
 		this.beanFactory = beanFactory;
 	}
 }

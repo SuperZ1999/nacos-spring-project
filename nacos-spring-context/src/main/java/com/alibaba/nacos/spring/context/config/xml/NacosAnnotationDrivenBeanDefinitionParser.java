@@ -47,6 +47,7 @@ public class NacosAnnotationDrivenBeanDefinitionParser implements BeanDefinition
 		NacosBeanDefinitionRegistrar registrar = new NacosBeanDefinitionRegistrar();
 		registrar.setEnvironment(environment);
 		registrar.registerNacosAnnotationBeans(registry);
+		System.out.println("annotation-driven解析完毕");
 		return null;
 	}
 }

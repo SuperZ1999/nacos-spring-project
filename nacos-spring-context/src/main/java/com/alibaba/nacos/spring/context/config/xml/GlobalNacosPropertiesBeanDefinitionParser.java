@@ -81,7 +81,7 @@ public class GlobalNacosPropertiesBeanDefinitionParser implements BeanDefinition
 		// Register Global Nacos Properties as Spring singleton bean
 		registerGlobalNacosProperties(properties, registry, environment,
 				GLOBAL_NACOS_PROPERTIES_BEAN_NAME);
-
+		System.out.println("global-properties解析完毕");
 		return null;
 	}
 

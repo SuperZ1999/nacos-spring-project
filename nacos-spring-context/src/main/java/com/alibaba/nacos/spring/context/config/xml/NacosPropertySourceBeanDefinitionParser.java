@@ -56,7 +56,7 @@ public class NacosPropertySourceBeanDefinitionParser
 		NacosPropertySourceXmlBeanDefinition beanDefinition = new NacosPropertySourceXmlBeanDefinition();
 		beanDefinition.setElement(element);
 		beanDefinition.setXmlReaderContext(parserContext.getReaderContext());
-
+		System.out.println("property-source解析完毕");
 		return beanDefinition;
 	}
 

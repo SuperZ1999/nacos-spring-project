@@ -405,6 +405,7 @@ public abstract class AbstractAnnotationBeanPostProcessor implements
         Object injectedObject = injectedObjectsCache.get(cacheKey);
 
         if (injectedObject == null) {
+            System.out.println("native test: " + "开始获取inject bean");
             injectedObject = doGetInjectedBean(attributes, bean, beanName, injectedType, injectedElement);
             // Customized inject-object if necessary
             injectedObjectsCache.putIfAbsent(cacheKey, injectedObject);
@@ -619,10 +620,15 @@ public abstract class AbstractAnnotationBeanPostProcessor implements
 
         @Override
         protected void inject(Object bean, String beanName, PropertyValues pvs) throws Throwable {
+            System.out.println("native test: " + beanName);
 
             Class<?> injectedType = resolveInjectedType(bean, field);
 
+            System.out.println("native test: " + injectedType);
+
             Object injectedObject = getInjectedObject(attributes, bean, beanName, injectedType, this);
+
+            System.out.println("native test: " + injectedObject);
 
             ReflectionUtils.makeAccessible(field);
 
