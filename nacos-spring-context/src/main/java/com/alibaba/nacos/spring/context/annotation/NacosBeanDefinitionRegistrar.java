@@ -72,7 +72,7 @@ public class NacosBeanDefinitionRegistrar
 		registerNacosAnnotationBeans(registry);
 		// Invoke NacosPropertySourcePostProcessor immediately
 		// in order to enhance the precedence of @NacosPropertySource process
-//		invokeNacosPropertySourcePostProcessor(beanFactory);
+		invokeNacosPropertySourcePostProcessor(beanFactory);
 	}
 
 	@Override
